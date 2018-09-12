@@ -49,5 +49,27 @@ public class SolveMaze {
         } else {
             System.out.println("Try again!");
         }
+
+        // Reset
+        maze.startAtZero();
+        maze.endAtTopRight();
+
+        while (!maze.isFinished()) {
+            while (maze.canMove()) {
+                maze.move();
+            }
+            if (Math.random() < 0.5) {
+                maze.turnRight();
+            } else {
+                maze.turnLeft();
+            }
+        }
+
+        if (maze.isFinished()) {
+            System.out.println("You solved the maze using random walk!");
+        } else {
+            System.out.println("Maze failed with random walk!");
+        }
+
     }
 }
